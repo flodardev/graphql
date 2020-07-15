@@ -2,6 +2,11 @@
 
 An app that allows user to add movies to a list.
 
+## Deployed
+
+Heroku
+https://flodardev-graphql.herokuapp.com/
+
 ## Built With
 
 - [MongoDB](https://www.mongodb.com/) - The platform for modern applications.
