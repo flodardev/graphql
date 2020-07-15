@@ -46,9 +46,19 @@ var root = {
 		});
 	},
 	book: async (args) => {
-		const { id, name, genre, authorId } = await Book.findById(args.id);
-		const author = await Author.findById(authorId);
-		return { id, name, genre, author };
+		const booksList = await Book.find({});
+		const book = booksList.find((book) => book.id === args.id);
+		const { id, name, age } = await Author.findById(book.authorId);
+		const books = await booksList.filter(
+			(docs) => docs.authorId === book.authorId,
+		);
+		const author = {
+			id,
+			name,
+			age,
+			books,
+		};
+		return { id: book.id, name: book.name, genre: book.genre, author };
 	},
 	authors: async () => {
 		const booksList = await Book.find({});
